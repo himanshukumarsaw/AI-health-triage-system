@@ -1,0 +1,22 @@
+{
+    "name": "AI-TriageMD",
+    "short_name": "TriageMD",
+    "description": "AI-powered medical triage system with rapid symptom analysis and clinical decision support",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f0fdf4",
+    "theme_color": "#059669",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ],
+    "categories": [
+        "health",
+        "medical",
+        "productivity"
+    ]
+}
