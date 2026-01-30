@@ -26,107 +26,77 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
-      {/* Top Banner */}
-      <div className="header-top">
-        <div className="header-top-content">
-          <h1 className="header-title">AI-TriageMD</h1>
-          <p className="header-subtitle">Intelligent Healthcare Triage System powered by Advanced AI</p>
-          <div className="header-tagline">
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-              Rapid Analysis
-            </span>
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                <polyline points="22 4 12 14.01 9 11.01" />
-              </svg>
-              Priority-Based Care
-            </span>
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-              Clinical Decision Support
-            </span>
-          </div>
-        </div>
-      </div>
-
+    <header className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 shadow-xl">
       {/* Navigation */}
-      <nav className="header-nav">
-        <Link href="/" className="logo">
-          <div className="logo-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-          </div>
-          <span>ABHASH</span>
-        </Link>
-
-        <div className="nav-actions">
-          <div className="language-select">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </svg>
-            <span>English</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </div>
-
-          <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>
-            Home
-          </Link>
-
-          <Link href="/intake" className={`nav-link ${pathname === '/intake' ? 'active' : ''}`}>
-            Patient Intake
-          </Link>
-
-          <Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>
-            Dashboard
-          </Link>
-
-          {isLoggedIn ? (
-            <div className="user-menu">
-              <span className="user-name">{userName}</span>
-              <button onClick={handleLogout} className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '14px' }}>
-                Logout
-              </button>
+      <nav className="bg-emerald-600 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 text-white font-bold text-xl hover:text-emerald-100 transition-colors">
+            <div className="bg-white rounded-lg p-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
             </div>
-          ) : (
-            <Link href="/auth" className="btn btn-primary" style={{ padding: '10px 24px' }}>
-              Get Started
-            </Link>
-          )}
+            <span>ABHASH</span>
+          </Link>
 
-          <button className="hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex items-center gap-2 text-white cursor-pointer hover:text-emerald-100 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+              <span>English</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+
+            <Link href="/" className={`text-white hover:text-emerald-100 transition-colors font-medium ${pathname === '/' ? 'border-b-2 border-white' : ''}`}>
+              Home
+            </Link>
+
+            <Link href="/intake" className={`text-white hover:text-emerald-100 transition-colors font-medium ${pathname === '/intake' ? 'border-b-2 border-white' : ''}`}>
+              Patient Intake
+            </Link>
+
+            <Link href="/dashboard" className={`text-white hover:text-emerald-100 transition-colors font-medium ${pathname === '/dashboard' ? 'border-b-2 border-white' : ''}`}>
+              Dashboard
+            </Link>
+
+            {isLoggedIn ? (
+              <div className="flex items-center gap-4">
+                <span className="text-white font-medium">{userName}</span>
+                <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link href="/auth" className="bg-white text-emerald-600 hover:bg-emerald-50 px-6 py-2 rounded-lg font-bold transition-colors">
+                Get Started
+              </Link>
+            )}
+          </div>
+
+          <button className="md:hidden text-white flex flex-col gap-1" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <span className="w-6 h-0.5 bg-white block"></span>
+            <span className="w-6 h-0.5 bg-white block"></span>
+            <span className="w-6 h-0.5 bg-white block"></span>
           </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-emerald-700 border-t border-emerald-500">
+            <Link href="/" className="block text-white px-4 py-3 hover:bg-emerald-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link href="/intake" className="block text-white px-4 py-3 hover:bg-emerald-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Patient Intake</Link>
+            <Link href="/imaging" className="block text-white px-4 py-3 hover:bg-emerald-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Medical Imaging</Link>
+            <Link href="/dashboard" className="block text-white px-4 py-3 hover:bg-emerald-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
+            <Link href="/auth" className="block text-white px-4 py-3 hover:bg-emerald-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Login / Sign Up</Link>
+          </div>
+        )}
       </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="mobile-menu">
-          <Link href="/" className="mobile-menu-link" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link href="/intake" className="mobile-menu-link" onClick={() => setMobileMenuOpen(false)}>Patient Intake</Link>
-          <Link href="/imaging" className="mobile-menu-link" onClick={() => setMobileMenuOpen(false)}>Medical Imaging</Link>
-          <Link href="/dashboard" className="mobile-menu-link" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
-          <Link href="/auth" className="mobile-menu-link" onClick={() => setMobileMenuOpen(false)}>Login / Sign Up</Link>
-        </div>
-      )}
     </header>
   );
 }

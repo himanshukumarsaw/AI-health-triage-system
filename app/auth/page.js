@@ -68,373 +68,223 @@ export default function AuthPage() {
     };
 
     return (
-        <div className="container" style={{
-            minHeight: 'calc(100vh - 200px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 'var(--space-2xl) var(--space-lg)'
-        }}>
-            <div style={{
-                width: '100%',
-                maxWidth: '480px',
-                background: 'var(--color-white)',
-                borderRadius: 'var(--radius-xl)',
-                padding: 'var(--space-2xl)',
-                boxShadow: 'var(--shadow-xl)',
-                border: '1px solid var(--color-border)',
-                animation: 'fadeInUp 0.5s ease-out'
-            }}>
-                {/* Logo */}
-                <div style={{ textAlign: 'center', marginBottom: 'var(--space-xl)' }}>
-                    <div style={{
-                        width: '70px',
-                        height: '70px',
-                        background: 'var(--color-primary-gradient)',
-                        borderRadius: 'var(--radius-lg)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto var(--space-md)',
-                        fontSize: '32px',
-                        boxShadow: 'var(--shadow-lg), 0 0 30px rgba(16, 185, 129, 0.3)'
-                    }}>
-                        🏥
+        <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-slate-100 flex items-center justify-center px-4 py-12">
+            <div className="w-full max-w-md">
+                {/* Card */}
+                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-8">
+                    {/* Logo Section */}
+                    <div className="text-center mb-8">
+                        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-500 rounded-2xl mb-4 shadow-lg">
+                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h1 className="text-3xl font-bold text-slate-900 font-poppins mb-2">AI-TriageMD</h1>
+                        <p className="text-slate-600 text-sm">Intelligent Healthcare Triage</p>
                     </div>
-                    <h1 style={{
-                        fontFamily: 'var(--font-family-display)',
-                        fontSize: 'var(--font-size-2xl)',
-                        fontWeight: 800,
-                        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
-                    }}>
-                        AI-TriageMD
-                    </h1>
-                    <p style={{ color: 'var(--color-text-muted)', marginTop: 'var(--space-xs)' }}>
-                        {isLogin ? 'Welcome back!' : 'Create your account'}
-                    </p>
-                </div>
 
-                {/* Toggle Tabs */}
-                <div style={{
-                    display: 'flex',
-                    background: 'var(--color-surface-light)',
-                    borderRadius: 'var(--radius-full)',
-                    padding: '4px',
-                    marginBottom: 'var(--space-xl)'
-                }}>
-                    <button
-                        type="button"
-                        onClick={() => setIsLogin(true)}
-                        style={{
-                            flex: 1,
-                            padding: 'var(--space-sm) var(--space-md)',
-                            borderRadius: 'var(--radius-full)',
-                            border: 'none',
-                            background: isLogin ? 'var(--color-white)' : 'transparent',
-                            color: isLogin ? 'var(--color-primary)' : 'var(--color-text-muted)',
-                            fontWeight: 600,
-                            cursor: 'pointer',
-                            transition: 'all var(--transition-base)',
-                            boxShadow: isLogin ? 'var(--shadow-sm)' : 'none'
-                        }}
-                    >
-                        Login
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => setIsLogin(false)}
-                        style={{
-                            flex: 1,
-                            padding: 'var(--space-sm) var(--space-md)',
-                            borderRadius: 'var(--radius-full)',
-                            border: 'none',
-                            background: !isLogin ? 'var(--color-white)' : 'transparent',
-                            color: !isLogin ? 'var(--color-primary)' : 'var(--color-text-muted)',
-                            fontWeight: 600,
-                            cursor: 'pointer',
-                            transition: 'all var(--transition-base)',
-                            boxShadow: !isLogin ? 'var(--shadow-sm)' : 'none'
-                        }}
-                    >
-                        Sign Up
-                    </button>
-                </div>
-
-                {/* Error Message */}
-                {error && (
-                    <div style={{
-                        background: 'linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%)',
-                        color: '#DC2626',
-                        padding: 'var(--space-md)',
-                        borderRadius: 'var(--radius-md)',
-                        marginBottom: 'var(--space-lg)',
-                        fontSize: 'var(--font-size-sm)',
-                        fontWeight: 500,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-sm)'
-                    }}>
-                        ⚠️ {error}
+                    {/* Tabs */}
+                    <div className="flex gap-2 mb-8">
+                        <button
+                            onClick={() => {
+                                setIsLogin(true);
+                                setError('');
+                            }}
+                            className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
+                                isLogin
+                                    ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
+                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                            }`}
+                        >
+                            Login
+                        </button>
+                        <button
+                            onClick={() => {
+                                setIsLogin(false);
+                                setError('');
+                            }}
+                            className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
+                                !isLogin
+                                    ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
+                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                            }`}
+                        >
+                            Sign Up
+                        </button>
                     </div>
-                )}
 
-                {/* Form */}
-                <form onSubmit={handleSubmit}>
-                    {!isLogin && (
-                        <>
-                            <div className="form-group">
-                                <label className="form-label">Full Name</label>
+                    {/* Error Message */}
+                    {error && (
+                        <div className="bg-red-50 border-2 border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm font-medium flex items-center gap-2">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {error}
+                        </div>
+                    )}
+
+                    {/* Form */}
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* Email */}
+                        <div>
+                            <label className="block text-sm font-semibold text-slate-900 mb-2">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-emerald-500 focus:outline-none transition-colors"
+                                placeholder="your@email.com"
+                                required
+                            />
+                        </div>
+
+                        {/* Full Name (Sign Up Only) */}
+                        {!isLogin && (
+                            <div>
+                                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                                    Full Name
+                                </label>
                                 <input
                                     type="text"
                                     name="fullName"
                                     value={formData.fullName}
                                     onChange={handleChange}
-                                    className="form-input"
-                                    placeholder="Enter your full name"
-                                    pattern="[A-Za-z\s]+"
-                                    title="Please enter letters only"
-                                    style={{ background: 'var(--color-white)' }}
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-emerald-500 focus:outline-none transition-colors"
+                                    placeholder="John Doe"
+                                    required={!isLogin}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label className="form-label">Phone Number</label>
+                        )}
+
+                        {/* Phone (Sign Up Only) */}
+                        {!isLogin && (
+                            <div>
+                                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                                    Phone Number
+                                </label>
                                 <input
                                     type="tel"
                                     name="phoneNumber"
                                     value={formData.phoneNumber}
                                     onChange={handleChange}
-                                    className="form-input"
-                                    placeholder="+91 9876543210"
-                                    pattern="[0-9+\s\-]+"
-                                    title="Please enter a valid phone number"
-                                    style={{ background: 'var(--color-white)' }}
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-emerald-500 focus:outline-none transition-colors"
+                                    placeholder="+1 (555) 000-0000"
                                 />
                             </div>
-                        </>
-                    )}
+                        )}
 
-                    <div className="form-group">
-                        <label className="form-label">Email Address</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="form-input"
-                            placeholder="you@example.com"
-                            required
-                            style={{ background: 'var(--color-white)' }}
-                        />
-                    </div>
+                        {/* Role Selection (Sign Up Only) */}
+                        {!isLogin && (
+                            <div>
+                                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                                    Account Type
+                                </label>
+                                <select
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-emerald-500 focus:outline-none transition-colors"
+                                >
+                                    <option value="patient">Patient</option>
+                                    <option value="clinician">Healthcare Professional</option>
+                                </select>
+                            </div>
+                        )}
 
-                    <div className="form-group">
-                        <label className="form-label">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            className="form-input"
-                            placeholder="••••••••"
-                            required
-                            style={{ background: 'var(--color-white)' }}
-                        />
-                    </div>
+                        {/* Password */}
+                        <div>
+                            <label className="block text-sm font-semibold text-slate-900 mb-2">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-emerald-500 focus:outline-none transition-colors"
+                                placeholder="••••••••"
+                                required
+                            />
+                        </div>
 
-                    {!isLogin && (
-                        <>
-                            <div className="form-group">
-                                <label className="form-label">Confirm Password</label>
+                        {/* Confirm Password (Sign Up Only) */}
+                        {!isLogin && (
+                            <div>
+                                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                                    Confirm Password
+                                </label>
                                 <input
                                     type="password"
                                     name="confirmPassword"
                                     value={formData.confirmPassword}
                                     onChange={handleChange}
-                                    className="form-input"
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-emerald-500 focus:outline-none transition-colors"
                                     placeholder="••••••••"
-                                    required
-                                    style={{ background: 'var(--color-white)' }}
+                                    required={!isLogin}
                                 />
                             </div>
-
-                            <div className="form-group">
-                                <label className="form-label">I am a</label>
-                                <div style={{
-                                    display: 'flex',
-                                    gap: 'var(--space-md)',
-                                    marginTop: 'var(--space-sm)'
-                                }}>
-                                    <label style={{
-                                        flex: 1,
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: 'var(--space-sm)',
-                                        padding: 'var(--space-md)',
-                                        border: `2px solid ${formData.role === 'patient' ? 'var(--color-primary)' : 'var(--color-border)'}`,
-                                        borderRadius: 'var(--radius-lg)',
-                                        cursor: 'pointer',
-                                        background: formData.role === 'patient' ? 'rgba(16, 185, 129, 0.05)' : 'transparent',
-                                        transition: 'all var(--transition-base)'
-                                    }}>
-                                        <input
-                                            type="radio"
-                                            name="role"
-                                            value="patient"
-                                            checked={formData.role === 'patient'}
-                                            onChange={handleChange}
-                                            style={{ accentColor: 'var(--color-primary)' }}
-                                        />
-                                        <span>👤 Patient</span>
-                                    </label>
-                                    <label style={{
-                                        flex: 1,
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: 'var(--space-sm)',
-                                        padding: 'var(--space-md)',
-                                        border: `2px solid ${formData.role === 'clinician' ? 'var(--color-primary)' : 'var(--color-border)'}`,
-                                        borderRadius: 'var(--radius-lg)',
-                                        cursor: 'pointer',
-                                        background: formData.role === 'clinician' ? 'rgba(16, 185, 129, 0.05)' : 'transparent',
-                                        transition: 'all var(--transition-base)'
-                                    }}>
-                                        <input
-                                            type="radio"
-                                            name="role"
-                                            value="clinician"
-                                            checked={formData.role === 'clinician'}
-                                            onChange={handleChange}
-                                            style={{ accentColor: 'var(--color-primary)' }}
-                                        />
-                                        <span>👨‍⚕️ Clinician</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </>
-                    )}
-
-                    {isLogin && (
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                            marginBottom: 'var(--space-lg)'
-                        }}>
-                            <a href="#" style={{
-                                fontSize: 'var(--font-size-sm)',
-                                color: 'var(--color-primary)',
-                                fontWeight: 500
-                            }}>
-                                Forgot password?
-                            </a>
-                        </div>
-                    )}
-
-                    <button
-                        type="submit"
-                        className="btn btn-success"
-                        disabled={isLoading}
-                        style={{
-                            width: '100%',
-                            padding: 'var(--space-md)',
-                            fontSize: 'var(--font-size-base)',
-                            marginTop: 'var(--space-md)'
-                        }}
-                    >
-                        {isLoading ? (
-                            <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
-                                <span className="spinner" style={{ width: '20px', height: '20px', borderWidth: '2px' }}></span>
-                                {isLogin ? 'Logging in...' : 'Creating account...'}
-                            </span>
-                        ) : (
-                            isLogin ? '🔐 Login' : '🚀 Create Account'
                         )}
-                    </button>
-                </form>
 
-                {/* Divider */}
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--space-md)',
-                    margin: 'var(--space-xl) 0'
-                }}>
-                    <div style={{ flex: 1, height: '1px', background: 'var(--color-border)' }}></div>
-                    <span style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)' }}>or continue with</span>
-                    <div style={{ flex: 1, height: '1px', background: 'var(--color-border)' }}></div>
+                        {/* Submit Button */}
+                        <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 mt-6"
+                        >
+                            {isLoading ? (
+                                <>
+                                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                    Processing...
+                                </>
+                            ) : (
+                                <>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    {isLogin ? 'Sign In' : 'Create Account'}
+                                </>
+                            )}
+                        </button>
+                    </form>
+
+                    {/* Footer */}
+                    <p className="text-center text-slate-600 text-sm mt-6">
+                        {isLogin ? "Don't have an account? " : 'Already have an account? '}
+                        <button
+                            onClick={() => {
+                                setIsLogin(!isLogin);
+                                setError('');
+                            }}
+                            className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
+                        >
+                            {isLogin ? 'Sign up' : 'Login'}
+                        </button>
+                    </p>
+
+                    {/* Security Notice */}
+                    <div className="mt-6 pt-6 border-t border-slate-200">
+                        <p className="text-xs text-slate-500 text-center flex items-center justify-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                            Your data is encrypted and secure
+                        </p>
+                    </div>
                 </div>
 
-                {/* Social Login */}
-                <div style={{ display: 'flex', gap: 'var(--space-md)' }}>
-                    <button
-                        type="button"
-                        style={{
-                            flex: 1,
-                            padding: 'var(--space-md)',
-                            border: '1px solid var(--color-border)',
-                            borderRadius: 'var(--radius-lg)',
-                            background: 'var(--color-white)',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: 'var(--space-sm)',
-                            fontWeight: 500,
-                            transition: 'all var(--transition-base)'
-                        }}
-                        onMouseOver={(e) => e.target.style.background = 'var(--color-surface-light)'}
-                        onMouseOut={(e) => e.target.style.background = 'var(--color-white)'}
+                {/* Guest Access Link */}
+                <div className="mt-8 text-center">
+                    <Link
+                        href="/"
+                        className="text-slate-600 hover:text-slate-900 font-medium transition-colors flex items-center justify-center gap-2"
                     >
-                        <span style={{ fontSize: '20px' }}>🔵</span> Google
-                    </button>
-                    <button
-                        type="button"
-                        style={{
-                            flex: 1,
-                            padding: 'var(--space-md)',
-                            border: '1px solid var(--color-border)',
-                            borderRadius: 'var(--radius-lg)',
-                            background: 'var(--color-white)',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: 'var(--space-sm)',
-                            fontWeight: 500,
-                            transition: 'all var(--transition-base)'
-                        }}
-                        onMouseOver={(e) => e.target.style.background = 'var(--color-surface-light)'}
-                        onMouseOut={(e) => e.target.style.background = 'var(--color-white)'}
-                    >
-                        <span style={{ fontSize: '20px' }}>⚫</span> Apple
-                    </button>
-                </div>
-
-                {/* Footer */}
-                <p style={{
-                    textAlign: 'center',
-                    marginTop: 'var(--space-xl)',
-                    fontSize: 'var(--font-size-sm)',
-                    color: 'var(--color-text-muted)'
-                }}>
-                    By continuing, you agree to our{' '}
-                    <a href="#" style={{ color: 'var(--color-primary)', fontWeight: 500 }}>Terms of Service</a>
-                    {' '}and{' '}
-                    <a href="#" style={{ color: 'var(--color-primary)', fontWeight: 500 }}>Privacy Policy</a>
-                </p>
-
-                {/* Back to Home */}
-                <div style={{ textAlign: 'center', marginTop: 'var(--space-lg)' }}>
-                    <Link href="/" style={{
-                        color: 'var(--color-text-secondary)',
-                        fontSize: 'var(--font-size-sm)',
-                        fontWeight: 500,
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-xs)'
-                    }}>
-                        ← Back to Home
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                        Back to Home
                     </Link>
                 </div>
             </div>
